@@ -8,6 +8,7 @@ Example run (32-width model, 15 epochs):
 
 ```bash
 python train.py --width 32 --epochs 15
+```
 
 To reproduce the full scaling sweep, run:
 
@@ -18,11 +19,13 @@ python train.py --width 32 --epochs 15
 python train.py --width 64 --epochs 15
 python train.py --width 128 --epochs 15
 python train.py --width 192 --epochs 15
+```
 
 Then fit the scaling law and generate the figure:
 
 ```bash
 python fit_scaling_law.py
+```
 
 Results are appended to results/results.csv automatically.
 
