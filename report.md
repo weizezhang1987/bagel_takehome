@@ -73,9 +73,9 @@ E(N) = aN^-b + c
 
 Fitted parameters (Confidence intervals were estimated from nonlinear least-squares covariance).
 
-a = 17.18 ± 8.468548   (95% CI)
-b = 0.445 ± 0.053286   (95% CI)
-c = 0.0803 ± 0.009882   (95% CI)
+- a = 17.18 ± 8.468548   (95% CI)
+- b = 0.445 ± 0.053286   (95% CI)
+- c = 0.0803 ± 0.009882   (95% CI)
 
 Held-out validation:
 
