@@ -1,5 +1,31 @@
 # Bagel Labs Take Home Report
 
+## 0. How to Replicate the Results
+
+All experiments run from a single entry point.
+
+Example run (32-width model, 15 epochs):
+
+```bash
+python train.py --width 32 --epochs 15
+
+To reproduce the full scaling sweep, run:
+
+```bash
+python train.py --width 8 --epochs 15
+python train.py --width 16 --epochs 15
+python train.py --width 32 --epochs 15
+python train.py --width 64 --epochs 15
+python train.py --width 128 --epochs 15
+python train.py --width 192 --epochs 15
+
+Then fit the scaling law and generate the figure:
+
+```bash
+python fit_scaling_law.py
+
+Results are appended to results/results.csv automatically.
+
 ## 1. Question
 
 What empirical scaling law best describes how validation performance improves as CNN parameter count increases on CIFAR-10?
