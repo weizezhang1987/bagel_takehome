@@ -99,7 +99,7 @@ if USE_ERROR_METRIC:
 else:
     p0 = [0.1, 0.1, max(y_train) * 0.8]
 
-params_opt, _ = curve_fit(
+params_opt, pcov = curve_fit(
     scaling_fn,
     x_train,
     y_train,
@@ -108,6 +108,16 @@ params_opt, _ = curve_fit(
 )
 
 a, b, c = params_opt
+
+# standard errors
+stderr = np.sqrt(np.diag(pcov))
+
+# 95% confidence intervals (normal approx)
+ci95 = 1.96 * stderr
+
+a_ci = ci95[0]
+b_ci = ci95[1]
+c_ci = ci95[2]
 
 # Prediction
 pred_test_metric = scaling_fn(x_test, a, b, c)
@@ -129,9 +139,9 @@ print("\n" + "=" * 60)
 print("Fitted Scaling Law")
 print("=" * 60)
 print(f"{metric_name} = a * N^(-b) + c")
-print(f"a = {a:.6f}")
-print(f"b = {b:.6f}")
-print(f"c = {c:.6f}")
+print(f"a = {a:.6f} ± {a_ci:.6f}   (95% CI)")
+print(f"b = {b:.6f} ± {b_ci:.6f}   (95% CI)")
+print(f"c = {c:.6f} ± {c_ci:.6f}   (95% CI)")
 
 print("\nHoldout Evaluation")
 print("-" * 60)
