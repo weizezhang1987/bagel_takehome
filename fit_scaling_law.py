@@ -133,6 +133,35 @@ else:
 abs_err = abs(pred_test_acc - true_test_acc)
 
 # =====================================================
+# Save Summary
+# =====================================================
+SUMMARY_PATH = os.path.join(PLOT_DIR, "fit_summary.txt")
+
+summary_text = f"""
+============================================================
+Fitted Scaling Law
+============================================================
+{metric_name} = a * N^(-b) + c
+
+a = {a:.6f} ± {a_ci:.6f}   (95% CI)
+b = {b:.6f} ± {b_ci:.6f}   (95% CI)
+c = {c:.6f} ± {c_ci:.6f}   (95% CI)
+
+Holdout Evaluation
+------------------------------------------------------------
+Holdout width   : {int(test_df['width'].values[0])}
+Holdout params  : {int(x_test):,}
+Predicted acc   : {pred_test_acc:.4f}
+Actual acc      : {true_test_acc:.4f}
+Absolute error  : {abs_err:.4f}
+"""
+
+with open(SUMMARY_PATH, "w", encoding="utf-8") as f:
+    f.write(summary_text.strip())
+
+print(f"\nSaved summary to: {SUMMARY_PATH}")
+
+# =====================================================
 # Print Results
 # =====================================================
 print("\n" + "=" * 60)

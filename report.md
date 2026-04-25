@@ -112,6 +112,8 @@ Held-out validation:
 - Actual accuracy: **90.46%**  
 - Absolute prediction error: **0.21%**
 
+A simple power-law fit predicted the held-out largest model within 0.21% absolute accuracy.
+
 ![Scaling Law Curve](results/scaling_law.png)
 
 *Figure 1. Validation accuracy vs parameter count. Largest model was excluded from fitting and used as a holdout validation point.*
